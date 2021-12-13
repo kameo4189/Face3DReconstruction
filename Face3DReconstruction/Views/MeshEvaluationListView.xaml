@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="Face3DReconstruction.Views.MeshEvaluationListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Face3DReconstruction.Views"
+             xmlns:vml="clr-namespace:Face3DReconstruction.ViewModelLocator" 
+             xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+             vml:ViewModelLocator.AutoHookedUpViewModel="True" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <DataGrid Grid.Column="0"
+            Margin="2,2,0,2" VerticalAlignment="Stretch"
+              IsReadOnly="True" AutoGenerateColumns="False" 
+              ItemsSource="{Binding MeshList}"
+              SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="No." Width="*" Binding="{Binding No}"/>
+                <DataGridTextColumn Header="Position" Width="*" Binding="{Binding MeshPosition}"/>
+            </DataGrid.Columns>
+            <behaviors:Interaction.Triggers>
+                <behaviors:EventTrigger EventName="MouseDown">
+                    <behaviors:InvokeCommandAction Command="{Binding MouseSelectCommand}" />
+                </behaviors:EventTrigger>
+            </behaviors:Interaction.Triggers>
+        </DataGrid>
+        <GridSplitter Grid.Column="1" ResizeDirection="Columns" 
+                          HorizontalAlignment="Stretch" 
+                          VerticalAlignment="Stretch" Width="2" 
+                          BorderThickness="0,0,1,0" 
+                          BorderBrush="Gray" Background="Transparent"/>
+        <DataGrid Grid.Column="2"
+            Margin="0,2,2,2" VerticalAlignment="Stretch"
+              IsReadOnly="True" AutoGenerateColumns="False" 
+              ItemsSource="{Binding SelectedItem.EvalResult}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Eval Type" Width="*" Binding="{Binding Type}"/>
+                <DataGridTextColumn Header="Value" Width="*" Binding="{Binding Value}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>    
+</UserControl>

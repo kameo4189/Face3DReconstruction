@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="Face3DReconstruction.Views.Viewport2DView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Face3DReconstruction.Views"
+             xmlns:common="clr-namespace:Face3DReconstruction.Common"
+             xmlns:vml="clr-namespace:Face3DReconstruction.ViewModelLocator"
+             vml:ViewModelLocator.AutoHookedUpViewModel="True" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+        <common:BoolOrToVisibilityConverter x:Key="BoolOrToVisibilityConverter" />
+    </UserControl.Resources>
+    <UserControl.Style>
+        <Style>
+            <Setter Property="local:Viewport2DView.MeshType" Value="{Binding MeshType, Mode=OneWayToSource}"/>
+        </Style>
+    </UserControl.Style>
+    <UserControl.InputBindings>
+        <KeyBinding Key="S" Modifiers="Control" Command="{Binding SaveImageCommand}"/>
+    </UserControl.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <local:ZoomBorder ClipToBounds="True" Background="White">
+                <Grid>
+                    <Image Name="MainImage" Source="{Binding BitmapImage}"></Image>
+                    <ItemsControl ItemsSource="{Binding MaskLayers}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <Canvas/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemContainerStyle>
+                            <Style TargetType="ContentPresenter">
+                                <!--<Setter Property="Canvas.Visibility" Value="{Binding Config.Visibility, Converter={StaticResource BoolToVisibility}}"/>-->
+                                <Setter Property="Canvas.Visibility">
+                                    <Setter.Value>
+                                        <MultiBinding Converter="{StaticResource BoolOrToVisibilityConverter}">
+                                            <Binding Path="Config.Visibility" />
+                                            <Binding Path="Visibility"  />
+                                        </MultiBinding>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Canvas.Opacity" Value="{Binding Config.Opacity}"/>
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding MaskImage}" Stretch="Uniform"
+                               Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                               Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=ItemsControl}}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>                
+            </local:ZoomBorder>
+        </Grid>
+        <Button Command="{Binding ShowMaskConfigCommand}" Opacity="0.5" Width="30" Height="30" 
+                HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Image Source="\Resources\Icons\settings.png"></Image>
+        </Button>
+        <Grid Grid.Column="2" Grid.RowSpan="2" Visibility="{Binding ConfigVisibility, Converter={StaticResource BoolToVisibility}}" Opacity="0.8">
+            <local:Viewport2DConfigView></local:Viewport2DConfigView>
+        </Grid>
+    </Grid>
+</UserControl>
