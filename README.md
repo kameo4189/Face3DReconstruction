@@ -68,7 +68,19 @@ When clicking on an image item, current selected image and result mesh will be d
 #### Tab View, Mesh List and Evaluation List Area
 After selecting an item on Image List area, image and mesh (if requested) will be displayed.  
 Mesh List area will also display the AI mesh list. When selecting an item on Mesh List area, Evaluation List area will display the evaluation result of current AI mesh.  
-* The Preview tab will display all image, original mesh and AI mesh, 2D aligment of mesh on image will be also displayed.  
+* The Preview tab will display current selected image, original mesh and AI mesh, 2D aligment of mesh of selected image will be also displayed.  
 <img src="Usage/TabViewPreview.png">
-When selecting an an item on Mesh List area, current selected mesh will be highlighted.  
+When selecting an an item on Mesh List area, current selected mesh will be highlighted on all tabs. 
 <img src="Usage/TabViewPreviewSelectMesh.png">
+
+* The Original image tab: display image with 2D alignment of original mesh
+<img src="Usage/TabViewOriginalImage.png">
+
+* The Original mesh tab: display original mesh
+<img src="Usage/TabViewOriginalMesh.png">
+
+* The AI image tab: display image with 2D alignment of AI mesh
+<img src="Usage/TabViewAIImage.png">
+
+* The AI mesh tab: display AI mesh
+<img src="Usage/TabViewAIMesh.png">
