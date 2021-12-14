@@ -84,3 +84,20 @@ When selecting an an item on Mesh List area, current selected mesh will be highl
 
 * The AI mesh tab: display AI mesh
 <img src="Usage/TabViewAIMesh.png">
+
+#### Logging List Area
+Logging List area is used for displaying status and error messages that are occured when processing.
+<img src="Usage/LoggingList.png">
+
+## References
+Thanks for these source codes and libraries helping me to complete this repository.
+
+- https://github.com/helix-toolkit/helix-toolkit
+    - Library for displaying 3D mesh.
+- https://stackoverflow.com/questions/741956/pan-zoom-image
+    - Source code for pan and zoom 2D image by mouse.
+- https://zetcode.com/csharp/httpclient/
+    - Source code for sending HTTP request.
+- https://docs.microsoft.com/en-us/windows/communitytoolkit/mvvm/introduction
+- https://www.tutorialspoint.com/mvvm/mvvm_frameworks.htm
+    - Framework for building MVVM architecture.  
