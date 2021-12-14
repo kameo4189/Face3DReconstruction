@@ -23,7 +23,7 @@ namespace Face3DReconstruction.Models
                 KptColors = new Color[KptIdxs.Length];
                 for (int idx = 0; idx < KptIdxs.Length; idx++)
                 {
-                    KptColors[idx] = Geometry.Colors[idx].ToColor();
+                    KptColors[idx] = Geometry.Colors[KptIdxs[idx]].ToColor();
                 }
             }
         }
