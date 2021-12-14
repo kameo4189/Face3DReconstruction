@@ -57,11 +57,12 @@ Details of columns in Image List area:
 * Column 2: name of image
 * Column 3: button for requesting original mesh, it will be enabled when existing mat file with same name at the same folder of current image.
 * Column 4: button for requesting AI mesh
-* Column 5: button for requesting evaluation result, it will be enabled when existing mat file with same name at the same folder of current image.
+* Column 5: button for requesting evaluation result, it will be enabled when existing mat file with same name at the same folder of current image.  
+
 Buttons in column 3, 4, 5 will change color following processing status:
 * Red: not request yet.
 * Green: sent request and waiting for response.
-* Blue: received response and finsished display result.
+* Blue: received response and finished displaying result.  
 When selecting multiple images and click a button, all selected images will be processed for sending request.  
 When clicking on an image item, current selected image and result mesh will be displayed on Tab View area and Mesh List area.
 
