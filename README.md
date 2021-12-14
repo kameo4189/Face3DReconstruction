@@ -31,8 +31,8 @@ Run file Face3DReconstruction.exe for stating application.
 ### Overview
 Overview GUI of application  
 * Info Input: area for 2 texboxes on the top is used for inputting folder path and server url
-* Image List: area for list view on the center right is used for displaying list of images
-* Logging List: area for list view on the bottom right is used for displaying errors and status log
+* Image List: area for list view on the center left is used for displaying list of images
+* Logging List: area for list view on the bottom left is used for displaying errors and status log
 * Tab View: area for tab view on the center is used for displaying images and result meshs
 * Mesh List: area for list view on the bottom center is used for displaying list of result meshs
 * Evaluation List: area for list view on the bottom right is used for displaying list of evaluation results
