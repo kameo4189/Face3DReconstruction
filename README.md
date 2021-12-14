@@ -36,5 +36,39 @@ Overview GUI of application
 * Tab View: area for tab view on the center is used for displaying images and result meshs
 * Mesh List: area for list view on the bottom center is used for displaying list of result meshs
 * Evaluation List: area for list view on the bottom right is used for displaying list of evaluation results
-<img src="Usage/GUI.PNG">
+<img src="Usage/GUI.PNG">  
+All viewports for 2D image and 3D mesh on GUI can be zoomed and moved by mouse.  
+With 2D image viewports, you can click right mouse for reset to default view and press Ctrl-S for saving current image.
+With 3D image viewports, you can press Ctrl-K for display Keypoint and Ctrl-R for reset to default view.  
 
+#### Info Input Area
+Info Input area is used for inputting server url and folder path that contains images used for processing.
+<img src="Usage/InfoInput.png">
+After inputting folder path, Image List area will be displayed percentage of listing processing as below  
+<img src="Usage/ImageListProcessing.png">
+
+#### Image List Area
+Image List area is used for displaying image list that is used for requesting mesh.
+After finished listing processing, image list will be displayed as below  
+<img src="Usage/ImageListProcessed.png">
+
+Details of columns in Image List area:
+* Column 1: numerical order of each
+* Column 2: name of image
+* Column 3: button for requesting original mesh, it will be enabled when existing mat file with same name at the same folder of current image.
+* Column 4: button for requesting AI mesh
+* Column 5: button for requesting evaluation result, it will be enabled when existing mat file with same name at the same folder of current image.
+Buttons in column 3, 4, 5 will change color following processing status:
+* Red: not request yet.
+* Green: sent request and waiting for response.
+* Blue: received response and finsished display result.
+When selecting multiple images and click a button, all selected images will be processed for sending request.  
+When clicking on an image item, current selected image and result mesh will be displayed on Tab View area and Mesh List area.
+
+#### Tab View, Mesh List and Evaluation List Area
+After selecting an item on Image List area, image and mesh (if requested) will be displayed.  
+Mesh List area will also display the AI mesh list. When selecting an item on Mesh List area, Evaluation List area will display the evaluation result of current AI mesh.  
+* The Preview tab will display all image, original mesh and AI mesh, 2D aligment of mesh on image will be also displayed.  
+<img src="Usage/TabViewPreview.png">
+When selecting an an item on Mesh List area, current selected mesh will be highlighted.  
+<img src="Usage/TabViewPreviewSelectMesh.png">
